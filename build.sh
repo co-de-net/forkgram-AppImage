@@ -4,7 +4,7 @@ IMGTOOL_URL="https://github.com/AppImage/appimagetool/releases/download/continuo
 IMGTOOL="aitool"
 TAG=$(curl -s https://api.github.com/repos/forkgram/tdesktop/releases/latest | grep -Po '(?<="tag_name": ")[^"]*')
 FORKGRAM_URL="https://github.com/forkgram/tdesktop/releases/download/${TAG}/Telegram.tar.xz"
-FORKGRAM="forkgram.7z"
+FORKGRAM="forkgram.tar.xz"
 DIR_STR="AppDir/usr/bin"
 
 # get deps
@@ -18,7 +18,7 @@ chmod +x "$IMGTOOL"
 mkdir -p "$DIR_STR"
 
 # Extract forkgram archive
-7z x "$FORKGRAM"
+tar -xf "$FORKGRAM"
 
 # Prepare AppDir
 mv Telegram "$DIR_STR"/forkgram
